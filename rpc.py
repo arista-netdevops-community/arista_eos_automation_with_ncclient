@@ -41,3 +41,5 @@ rpc = interface_rpc(interface, interface_description, vlan_id)
 rpcreply = eos.dispatch(to_ele(rpc))
 print(rpcreply)
 
+eos.close_session()
+
