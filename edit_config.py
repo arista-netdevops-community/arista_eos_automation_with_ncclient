@@ -33,6 +33,7 @@ conf = '''
 </config>
 '''
 
-eos.edit_config(target = "running", config = conf)
+configuration = eos.edit_config(target = "running", config = conf)
+print (configuration) 
 
 eos.close_session()
