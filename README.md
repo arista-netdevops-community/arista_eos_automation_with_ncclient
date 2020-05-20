@@ -1,3 +1,21 @@
+# About this repository 
+
+This repo has python scripts using ncclient to interact with Arista EOS devices
+
+# About ncclient  
+
+ncclient is a python library. It is a NETCONF client implementation in Python.    
+Code https://github.com/ncclient/ncclient  
+Doc https://ncclient.readthedocs.io/en/latest/  
+PyPI (Python Package Index) https://pypi.python.org/pypi/ncclient  
+
+# About NETCONF
+
+NETCONF is a protocol defined in the [RFC 6241](https://tools.ietf.org/html/rfc6241)   
+ncclient is a NETCONF client  
+
+# Requirements 
+
 Requirements on your laptop: 
 ```
 pip freeze | grep ncclient
@@ -11,7 +29,8 @@ management api netconf
    transport ssh def
 ```
 
-ncclient demo: 
+# ncclient demo
+
 ```
 >>> from ncclient import manager
 >>> 
@@ -44,6 +63,8 @@ False
 >>> 
 >>> exit()
 ```
+
+# How to open a NetConf session inside an SSH connection
 
 we can invoke the NetConf subsystem using the following command:  
 ```
