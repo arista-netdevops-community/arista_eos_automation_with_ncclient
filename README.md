@@ -79,6 +79,6 @@ To close the NetConf session:
 
 # Credits
 
-Thank you to for writing this blog https://eos.arista.com/ncclient-example-with-eos/  
+Thank you to  John Allen for writing this blog https://eos.arista.com/ncclient-example-with-eos/  
 It provided the basis for this example.
 
