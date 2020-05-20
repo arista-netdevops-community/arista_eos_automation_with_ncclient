@@ -77,5 +77,8 @@ To close the NetConf session:
 <rpc><close-session></close-session></rpc>]]>]]>
 ```
 
-https://eos.arista.com/ncclient-example-with-eos/ provided the basis for this example.
+# Credits
+
+Thank you to for writing this blog https://eos.arista.com/ncclient-example-with-eos/  
+It provided the basis for this example.
 
