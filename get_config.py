@@ -14,6 +14,18 @@ domain_name='''
 domain_name_conf = eos.get_config(source="running", filter=("subtree", domain_name))
 print (domain_name_conf)
 
+dns_servers='''
+<system>
+    <dns>
+        <servers>
+        </servers>
+    </dns>
+</system>
+'''
+
+dns_servers_conf = eos.get_config(source="running", filter=("subtree", dns_servers))
+print (dns_servers_conf)
+
 Interface_Ethernet3='''
 <interfaces>
     <interface>
