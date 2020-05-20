@@ -45,6 +45,18 @@ True
 >>> 
 >>> assert("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring" in eos.server_capabilities), "NetConf server not compliant with https://tools.ietf.org/html/rfc6022"
 >>> 
+>>> conf = '''
+... <config>
+...     <system>
+...         <config>
+...             <domain-name>abc.xyz</domain-name>
+...         </config>
+...     </system>
+... </config>
+... '''
+>>> eos.edit_config(target = "running", config = conf)
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:45df179a-4dfd-441b-80b7-b7076068efb1"><ok></ok></rpc-reply>
+>>> 
 >>> domain_name='''
 ... <system>
 ...     <config>
@@ -55,7 +67,7 @@ True
 ... '''
 >>> domain_name_conf = eos.get_config(source="running", filter=("subtree", domain_name))
 >>> print (domain_name_conf)
-<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:e41791b2-72ef-41ce-9d2a-8d2286cbbfef"><data time-modified="2020-05-20T17:39:58.332197444Z"><system xmlns="http://openconfig.net/yang/system"><config><domain-name>lab.local</domain-name></config></system></data></rpc-reply>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:7d60e55e-4eaf-45cc-ba3e-1e834e93d382"><data time-modified="2020-05-20T23:40:20.013989594Z"><system xmlns="http://openconfig.net/yang/system"><config><domain-name>abc.xyz</domain-name></config></system></data></rpc-reply>
 >>> 
 >>> eos.close_session()
 <rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:bbc401ee-21ef-480e-947c-10d8d5f998b3"><ok></ok></rpc-reply>
