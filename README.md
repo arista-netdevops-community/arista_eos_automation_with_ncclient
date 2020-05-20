@@ -1,10 +1,11 @@
 # About this repository 
 
-This repo has python scripts using ncclient to interact with Arista EOS devices
+This repository has python scripts using ncclient to interact with Arista EOS devices
 
 # About ncclient  
 
-ncclient is a python library. It is a NETCONF client implementation in Python.    
+ncclient is a python library.  
+It is a NETCONF client implementation in Python.    
 Code https://github.com/ncclient/ncclient  
 Documentation https://ncclient.readthedocs.io/en/latest/  
 PyPI (Python Package Index) https://pypi.python.org/pypi/ncclient  
