@@ -34,3 +34,5 @@ conf = '''
 '''
 
 eos.edit_config(target = "running", config = conf)
+
+eos.close_session()
