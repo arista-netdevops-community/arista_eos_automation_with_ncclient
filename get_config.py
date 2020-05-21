@@ -11,8 +11,7 @@ domain_name='''
 </system>
 '''
 
-domain_name_conf = eos.get_config(source="running", filter=("subtree", domain_name))
-print (domain_name_conf)
+print (eos.get_config(source="running", filter=("subtree", domain_name)))
 
 dns_servers='''
 <system>
@@ -23,10 +22,9 @@ dns_servers='''
 </system>
 '''
 
-dns_servers_conf = eos.get_config(source="running", filter=("subtree", dns_servers))
-print (dns_servers_conf)
+print (eos.get_config(source="running", filter=("subtree", dns_servers)))
 
-dns='''
+dns_8888='''
 <system>
     <dns>
         <servers>
@@ -40,8 +38,7 @@ dns='''
 </system>
 '''
 
-dns_conf = eos.get_config(source="running", filter=("subtree", dns_servers))
-print (dns_conf)
+print (eos.get_config(source="running", filter=("subtree", dns_8888)))
 
 Interface_Ethernet3='''
 <interfaces>
@@ -51,7 +48,6 @@ Interface_Ethernet3='''
 </interfaces>
 '''
 
-Interface_Ethernet3_conf = eos.get_config(source="running", filter=("subtree", Interface_Ethernet3))
-print(Interface_Ethernet3_conf)
+print(eos.get_config(source="running", filter=("subtree", Interface_Ethernet3)))
 
 eos.close_session()
