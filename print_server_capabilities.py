@@ -13,18 +13,4 @@ assert("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring" in eos.server_capab
 eos.close_session()
 
 
- <rpc message-id="101"
-          xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
-       <get>
-         <filter type="subtree">
-           <top xmlns="http://example.com/schema/1.2/stats">
-             <interfaces>
-               <interface>
-                 <ifName>eth0</ifName>
-               </interface>
-             </interfaces>
-           </top>
-         </filter>
-       </get>
-     </rpc>
      
