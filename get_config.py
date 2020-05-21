@@ -26,6 +26,23 @@ dns_servers='''
 dns_servers_conf = eos.get_config(source="running", filter=("subtree", dns_servers))
 print (dns_servers_conf)
 
+dns='''
+<system>
+    <dns>
+        <servers>
+            <server>
+                <address>8.8.8.8</address>
+                <config>
+                </config>
+            </server>
+        </servers>
+    </dns>
+</system>
+'''
+
+dns_conf = eos.get_config(source="running", filter=("subtree", dns_servers))
+print (dns_conf)
+
 Interface_Ethernet3='''
 <interfaces>
     <interface>
