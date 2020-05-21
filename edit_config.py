@@ -12,22 +12,24 @@ conf = '''
             <config>
                 <network-instance xmlns="http://arista.com/yang/openconfig/system/augments">default</network-instance>
             </config>
-                <servers>
-                    <server>
+            <servers>
+                <server>
+                    <address>
+                        8.8.8.8
+                    </address>
+                    <config>
                         <address>8.8.8.8</address>
-                        <config>
-                            <address>8.8.8.8</address>
-                            <port>53</port>
-                         </config>
-                    </server>
-                    <server>
+                        <port>53</port>
+                    </config>
+                </server>
+                <server>
+                    <address>10.83.28.52</address>
+                    <config>
                         <address>10.83.28.52</address>
-                        <config>
-                            <address>10.83.28.52</address>
-                            <port>53</port>
-                        </config>
-                    </server>
-                </servers>
+                        <port>53</port>
+                    </config>
+                </server>
+            </servers>
         </dns>
     </system>
 </config>
