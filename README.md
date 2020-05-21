@@ -78,7 +78,49 @@ False
 >>> 
 >>> exit()
 ```
-
+```
+>>> from lxml import etree
+>>> system_e = etree.Element("system")
+>>> dns_e = etree.SubElement(system_e, "dns")
+>>> servers_e = etree.SubElement(dns_e, "servers")
+>>> server_e = etree.SubElement(servers_e, "server")
+>>> address_e = etree.SubElement(server_e, "address")
+>>> config_e = etree.SubElement(server_e, "config")
+>>> address_e.text = "8.8.8.8"
+>>> 
+>>> address_e.text
+'8.8.8.8'
+>>> 
+>>> etree.tostring(system_e)
+b'<system><dns><servers><server><address>8.8.8.8</address><config/></server></servers></dns></system>'
+>>> 
+>>> etree.tostring(system_e, pretty_print = True)
+b'<system>\n  <dns>\n    <servers>\n      <server>\n        <address>8.8.8.8</address>\n        <config/>\n      </server>\n    </servers>\n  </dns>\n</system>\n'
+>>> 
+>>> etree.dump(system_e)
+<system>
+  <dns>
+    <servers>
+      <server>
+        <address>8.8.8.8</address>
+        <config/>
+      </server>
+    </servers>
+  </dns>
+</system>
+>>> 
+>>> from ncclient import manager
+>>> eos=manager.connect(host="10.83.28.203", port="830", timeout=30, username="arista", password="arista", hostkey_verify=False)
+>>> eos.connected
+True
+>>> 
+>>> print(eos.get_config(source="running", filter=("subtree", system_e)))
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:852573e7-7f0b-44eb-bd89-a3ecc4393596"><data time-modified="2020-05-20T23:40:20.065542759Z"><system xmlns="http://openconfig.net/yang/system"><dns><servers><server><address>8.8.8.8</address><config><address>8.8.8.8</address><port>53</port></config></server></servers></dns></system></data></rpc-reply>
+>>> 
+>>> eos.close_session()
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:b1d2afcb-90f2-4ea2-afed-3641339016f1"><ok></ok></rpc-reply>
+>>> exit()
+```
 # Credits
 
 Thank you to  John Allen for writing this blog https://eos.arista.com/ncclient-example-with-eos/  
