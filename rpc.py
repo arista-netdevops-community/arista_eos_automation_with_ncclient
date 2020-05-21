@@ -7,7 +7,8 @@ interface_description = "whatever"
 interface = "3"
 
 def vlan_rpc(id, name):
-    vlan_rpc = """<nc:edit-config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+    vlan_rpc = """
+    <nc:edit-config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
     <target>
     <running/>
     </target>
@@ -15,11 +16,13 @@ def vlan_rpc(id, name):
     <command>vlan %s</command>
     <command>name %s</command>
     </commands>
-    </nc:edit-config>""" % (vlan_id, vlan_name)
+    </nc:edit-config>
+    """ % (vlan_id, vlan_name)
     return (vlan_rpc)
 
 def interface_rpc(interface, description, vlan):
-    interface_rpc = """<nc:edit-config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+    interface_rpc = """
+    <nc:edit-config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
     <target>
     <running/>
     </target>
@@ -28,7 +31,8 @@ def interface_rpc(interface, description, vlan):
     <command>description %s</command>
     <command>switchport access vlan %s</command>
     </commands>
-    </nc:edit-config>""" % (interface, description, vlan)
+    </nc:edit-config>
+    """ % (interface, description, vlan)
     return (interface_rpc)
 
 eos=manager.connect(host="10.83.28.203", port="830", timeout=30, username="arista", password="arista", hostkey_verify=False)
