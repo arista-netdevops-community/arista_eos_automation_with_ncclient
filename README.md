@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/ksator/arista_eos_automation_with_ncclient)   
+
 # About this repository 
 
 This repository has python scripts using ncclient to interact with Arista EOS devices
