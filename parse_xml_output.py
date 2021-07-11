@@ -1,8 +1,8 @@
-
 from ncclient import manager
 eos=manager.connect(host="10.73.1.105", port="830", timeout=30, username="arista", password="arista", hostkey_verify=False)
 
-Interface_Ethernet3='''
+# Configure an interface description
+Interface_Ethernet3_description='''
     <config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
         <interfaces xmlns="http://openconfig.net/yang/interfaces">
             <interface>
@@ -14,10 +14,9 @@ Interface_Ethernet3='''
         </interfaces>
     </config>
 '''
-reply = eos.edit_config(target="running", config=Interface_Ethernet3, default_operation="none")
+reply = eos.edit_config(target="running", config=Interface_Ethernet3_description, default_operation="none")
 
-ns = {None: 'http://openconfig.net/yang/interfaces'}
-
+# Get interface state and configuration data
 Interface_Ethernet3='''
     <interfaces>
         <interface>
@@ -26,8 +25,11 @@ Interface_Ethernet3='''
     </interfaces>
 '''
 get_interface_ethernet3 = eos.get(filter=("subtree", Interface_Ethernet3))
+print (get_interface_ethernet3)
 
-print (get_interface_ethernet3.ok)
+# Parse the XML output
+
+ns = {None: 'http://openconfig.net/yang/interfaces'}
 
 description = get_interface_ethernet3.data.find(".//interfaces/interface/config/description", namespaces=ns)
 print(description.text)
@@ -35,4 +37,11 @@ print(description.text)
 operStatus = get_interface_ethernet3.data.find(".//interfaces/interface/state/oper-status", namespaces=ns)
 print(operStatus.text)
 
+# Get interface configuration and parse the XML output
 
+get_interface_ethernet3 = eos.get_config(source="running", filter=("subtree", Interface_Ethernet3))
+print (get_interface_ethernet3)
+
+ns = {None: 'http://openconfig.net/yang/interfaces'}
+description = get_interface_ethernet3.data.find(".//interfaces/interface/config/description", namespaces=ns)
+print(description.text)

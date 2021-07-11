@@ -37,13 +37,17 @@ def interface_rpc(interface, description, vlan):
 
 eos=manager.connect(host="10.83.28.203", port="830", timeout=30, username="arista", password="arista", hostkey_verify=False)
 
-rpc = vlan_rpc(vlan_id, vlan_name) 
+rpc = vlan_rpc(vlan_id, vlan_name)
+# print(rpc)
 rpcreply = eos.dispatch(to_ele(rpc))
 print(rpcreply)
+# print(rpcreply.ok)
 
-rpc = interface_rpc(interface, interface_description, vlan_id) 
+rpc = interface_rpc(interface, interface_description, vlan_id)
+# print(rpc)
 rpcreply = eos.dispatch(to_ele(rpc))
 print(rpcreply)
+# print(rpcreply.ok)
 
 eos.close_session()
 

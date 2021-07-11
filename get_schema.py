@@ -17,22 +17,19 @@ subtree='''
 '''
 get_reply = eos.get(filter=("subtree", subtree))
 print(get_reply.ok)
-# print(get_reply.errors)
 # print(get_reply)
 
-# retrieve a schema instance from the NETCONF server via get_schema operation (RFC 6022)
-get_schema_reply = eos.get_schema(identifier = "arista-vlan-deviations", version = "2019-11-13", format = 'yang') 
+# retrieve a schema from the NETCONF server via get_schema operation (RFC 6022)
+get_schema_reply = eos.get_schema(identifier = "arista-vlan-deviations", version = "2019-11-13", format = 'yang')
 print(get_schema_reply.ok)
-# print(get_schema_reply.errors)
 # print(get_schema_reply)
 
-# get the data model described in RFC 6022
-get_schema_reply = eos.get_schema(identifier = "ietf-netconf-monitoring", version = "2010-10-04", format = 'yang') 
+# retrieve the data model defined here https://datatracker.ietf.org/doc/html/rfc6022#section-5
+get_schema_reply = eos.get_schema(identifier = "ietf-netconf-monitoring", version = "2010-10-04", format = 'yang')
 print(get_schema_reply.ok)
-# print(get_schema_reply.errors)
 # print(get_schema_reply)
 
-# rfc6022 - NETCONF configuration datastores supported on this device
+# rfc6022 - list of datastores supported on this device
 subtree='''
 <netconf-state>
     <datastores>
@@ -41,7 +38,6 @@ subtree='''
 '''
 get_reply = eos.get(filter=("subtree", subtree))
 print(get_reply.ok)
-# print(get_reply.errors)
 # print(get_reply)
 
 
