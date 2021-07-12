@@ -200,14 +200,6 @@ conf = '''
         <config>
             <domain-name operation="delete">abc.xyz</domain-name>
          </config>
-    </system>
-</config>
-'''
-reply = eos.edit_config(target = "running", config = conf, default_operation="none")
-
-conf = '''
-<config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
-    <system xmlns="http://arista.com/yang/openconfig/system/">
         <dns>
             <servers>
                 <server>
