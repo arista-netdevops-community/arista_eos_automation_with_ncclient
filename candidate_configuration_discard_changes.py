@@ -47,7 +47,4 @@ with manager.connect(host="10.83.28.221", port="830", timeout=30, username="aris
     with eos.locked("candidate"):
         eos.edit_config(target = "candidate", config = cfg_system, default_operation="merge")
         eos.edit_config(target = "candidate", config = cfg_interface_ethernet3_description, default_operation="merge")
-        # to commit changes
-        eos.commit()
-        # to discard changes
-        # eos.discard_changes()
+        eos.discard_changes()
