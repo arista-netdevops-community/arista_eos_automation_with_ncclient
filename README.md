@@ -142,6 +142,26 @@ True
 ```
 
 There are many other python scripts using ncclient in this repository
+
+- [print_client_capabilities.py](print_client_capabilities.py) prints the NETCONF client capabilities.
+- [print_server_capabilities.py](print_server_capabilities.py) prints the NETCONF server capabilities.
+- [get.py](get.py) uses the `get` operation to retrieve the configuration and state data. It uses a filter to specify the portion of the configuration and state data to retrieve.
+- [get_config.py](get_config.py) uses the `get-config` operation with a filter to retrieve part of the configuration.
+- [parse_xml_output.py](parse_xml_output.py) uses the `get` operation to retrieve data from the device and then parse this data.
+- [edit_config_merge.py](edit_config_merge.py) uses the `edit-config` operation with the `merge` operation (which is the default operation for `edit-config`)
+- [edit_config_replace.py](edit_config_replace.py) uses the `edit-config` operation with the `replace` operation
+- [edit_config_delete.py](edit_config_delete.py) uses the `edit-config` operation with the `delete` operation
+- [EOS_commands_with_NETCONF.py](EOS_commands_with_NETCONF.py) configures a device using the `edit-config` operation and EOS data model
+- [candidate_configuration_commit.py](candidate_configuration_commit.py) uses the `edit-config` operation with the `candidate` configuration datastore. It uses a `lock` operation and `commit` operation.
+- [candidate_configuration_discard_changes.py](candidate_configuration_discard_changes.py). uses the `edit-config` operation with the `candidate` configuration datastore. It uses a `lock` operation and `discard_change` operation to revert the candidate configuration to the current running configuration (insteaf of commiting the candidate configuration).
+- [rpc.py](rpc.py) sends RPCs to configure EOS devices.
+
+To execute one of these scripts, run as example this command:
+
+```
+python3 print_server_capabilities.py
+```
+
 # NETCONF over SSH demo
 
 - NETCONF is defined in the RFC 6241.
@@ -151,7 +171,11 @@ In order to open a NETCONF session inside an SSH connection, there are two optio
 - we can invoke the NETCONF subsystem using the following SSH command `ssh username@device -s netconf`
 - we can establish an SSH connection to an EOS device (NETCONF server), and then run the EOS command `netconf start-client`
 
-There is NETCONF over SSH demo in [this file](NETCONF_over_SSH_demo.md)
+There is NETCONF over SSH demo in [this file](NETCONF_over_SSH_demo.md): 
+- It uses `lock`, `unlock`, `edit-config`, `commit`, `discard_change`, `get`, `get-config`, `copy-config` operations. 
+- It also uses filters. 
+- It edits both the `candidate` and `running` configuration datastore.
+
 # Credits
 
 Thank you to  John Allen for writing this blog https://eos.arista.com/ncclient-example-with-eos/
