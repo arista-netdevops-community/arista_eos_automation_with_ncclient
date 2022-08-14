@@ -31,6 +31,11 @@ isis = """
       </name>
      </config>
      <isis>
+      <global>
+        <config>
+          <instance>SUPERCORE</instance>
+        </config>
+      </global>
       <interfaces>
        <interface>
         <interface-id>
@@ -236,7 +241,7 @@ isis = """
 </config>
 """
 
-configuration = eos.edit_config(target = "running", config = isis, default_operation="merge")
+configuration = eos.edit_config(target="running", config=isis, default_operation="merge")
 print(configuration)
 
 eos.close_session()
